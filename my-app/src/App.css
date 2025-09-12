@@ -1,7 +1,7 @@
-.product-in-stock {
-  color: coral;
-}
-
-.product-out-stock {
-  color: grey;
+.todo-item {
+  width: 320px;
+  padding: 16px;
+  border: 1px solid #000;
+  margin-top: 10px;
+  text-align: center;
 }

@@ -21,7 +21,7 @@ const TodoGroup = () => {
 
 const TodoItem = ({ todo }) => {
   return (
-    <div>
+    <div className="todo-item">
       {todo.text}
     </div>
   );
