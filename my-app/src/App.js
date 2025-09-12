@@ -20,9 +20,18 @@ const TodoGroup = () => {
 };
 
 const TodoItem = ({ todo }) => {
+  const { state, dispatch } = useContext(TodoContext);
+
+  const markAsDone = () => {
+    dispatch({ type: "TOGGLE_TODO", payload: { id: todo.id } });
+  };
+
   return (
     <div className="todo-item">
-      <span className={todo.done ? "todo-done" : ""}>
+      <span 
+        className={todo.done ? "todo-done" : ""}
+        onClick={markAsDone}
+      >
         {todo.text}
       </span>
     </div>
@@ -30,7 +39,14 @@ const TodoItem = ({ todo }) => {
 };
 
 export const todoReducer = (state, action) => {
-  return state;
+  switch (action.type) {
+    case "TOGGLE_TODO":
+      return state.map((todo) =>
+        todo.id === action.payload.id ? { ...todo, done: !todo.done } : todo
+      );
+    default:
+      return state;
+  }
 };
 
 function App() {
