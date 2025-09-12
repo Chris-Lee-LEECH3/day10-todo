@@ -1,3 +1,7 @@
+.todo-list {
+  margin-block: 1rem;
+}
+
 .todo-item {
   width: 320px;
   padding: 16px;
