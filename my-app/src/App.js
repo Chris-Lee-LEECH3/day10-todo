@@ -3,7 +3,7 @@ import "./App.css";
 
 export const initState = [
   { id: 1, text: "the first todo", done: false },
-  { id: 2, text: "the second todo", done: false },
+  { id: 2, text: "the second todo", done: true },
 ];
 
 export const TodoContext = createContext();
@@ -17,15 +17,17 @@ const TodoGroup = () => {
       ))}
     </div>
   );
-}
+};
 
 const TodoItem = ({ todo }) => {
   return (
     <div className="todo-item">
-      {todo.text}
+      <span className={todo.done ? "todo-done" : ""}>
+        {todo.text}
+      </span>
     </div>
   );
-}
+};
 
 export const todoReducer = (state, action) => {
   return state;
