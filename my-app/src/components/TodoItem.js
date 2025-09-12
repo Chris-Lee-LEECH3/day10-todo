@@ -8,6 +8,10 @@ export const TodoItem = ({ todo }) => {
     dispatch({ type: "TOGGLE_TODO", payload: { id: todo.id } });
   };
 
+  const removeTodo = () => {
+    dispatch({ type: "REMOVE_TODO", payload: { id: todo.id } });
+  }
+
   return (
     <div className="todo-item">
       <span
@@ -16,6 +20,7 @@ export const TodoItem = ({ todo }) => {
       >
         {todo.text}
       </span>
+      <button onClick={removeTodo}>X</button>
     </div>
   );
 };
