@@ -1,5 +1,28 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+.todo-group-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+  max-width: 500px;
+}
+
 .todo-list {
   margin-block: 1rem;
+}
+
+.todo-item-container {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: start;
+  max-width: 400px;
 }
 
 .todo-item {
@@ -10,6 +33,35 @@
   text-align: center;
 }
 
+.todo-remove-btn {
+  padding: 8px 12px;
+  border: none;
+  background-color: #ff4d4f;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
 .todo-done {
   text-decoration: line-through;
+}
+
+.todo-generator-container {
+  display: flex;
+  width: 300px;
+  gap: 5px;
+}
+
+.todo-generator-container > input {
+  width: 100%;
+}
+
+.todo-generator-btn {
+  padding: 8px 12px;
+  border: none;
+  background-color: #1890ff;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
 }
