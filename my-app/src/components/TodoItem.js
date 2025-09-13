@@ -13,14 +13,16 @@ export const TodoItem = ({ todo }) => {
   }
 
   return (
-    <div className="todo-item">
-      <span
-        className={todo.done ? "todo-done" : ""}
-        onClick={markAsDone}
-      >
-        {todo.text}
-      </span>
-      <button onClick={removeTodo}>X</button>
+    <div className="todo-item-container">
+      <div className="todo-item">
+        <span
+          className={todo.done ? "todo-done" : ""}
+          onClick={markAsDone}
+        >
+          {todo.text}
+        </span>
+      </div>
+      <button className="todo-remove-btn" c onClick={removeTodo}>X</button>
     </div>
   );
 };

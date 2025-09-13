@@ -12,9 +12,9 @@ const TodoGenerator = () => {
   };
 
   return (
-    <div>
+    <div className='todo-generator-container'>
       <input value={todoItem} onChange={(e) => setTodoItem(e.target.value)} />
-      <button onClick={addTodo}>Add Todo</button>
+      <button className='todo-generator-btn' onClick={addTodo}>Add</button>
     </div>
   )
 }

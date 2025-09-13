@@ -17,9 +17,24 @@ export const TodoGroup = () => {
     );
   };
 
+  const TodoGroupHeader = () => {
+    return (
+      <h1>Todo List</h1>
+    );
+  }
+
+  const TodoGroupDescription = () => {
+    return (
+      <p>
+        Add the things you need to do today...
+      </p>
+    );
+  }
+
   return (
-    <div>
-      <ToDoList />
+    <div className="todo-group-container">
+      <TodoGroupHeader />
+      { state.length === 0 ? <TodoGroupDescription /> : <ToDoList /> }
       <TodoGenerator />
     </div>
   );
