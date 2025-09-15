@@ -4,6 +4,8 @@ import { Button, Divider, Modal, Input } from "antd";
 import { TodoContext } from "../contexts/TodoContext";
 import { useTodoService } from "../useTodoService";
 
+import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
+
 export const TodoItem = ({
   todo,
   displayDetailBtn = true,
@@ -94,12 +96,12 @@ export const TodoItem = ({
 
       <EditTodoItemModal />
       <Button className="todo-detail-btn" onClick={showModal}>
-        Edit
+        <EditOutlined /> Edit
       </Button>
 
       {displayDeleteBtn && (
         <Button className="todo-remove-btn" onClick={removeTodo}>
-          X
+          <DeleteOutlined /> Delete
         </Button>
       )}
     </div>

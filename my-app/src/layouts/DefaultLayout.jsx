@@ -6,6 +6,20 @@ const flexStyle = {
   width: "100%",
 };
 
+const contentStyle = { 
+  minHeight: "100vh",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  padding: "1rem"
+}
+
+const footerStyle = {
+  textAlign: 'center',
+  color: '#fff',
+  backgroundColor: '#001529',
+}
+
 const NavMenu = () => {
   const navigate = useNavigate();
 
@@ -58,11 +72,11 @@ const DefaultLayout = () => {
           <NavMenu />
         </Header>
 
-        <Content>
+        <Content style={contentStyle}>
           <Outlet />
         </Content>
 
-        <Footer>Footer</Footer>
+        <Footer style={footerStyle}>Footer</Footer>
       </Layout>
     </Flex>
   );

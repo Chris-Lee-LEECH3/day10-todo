@@ -5,8 +5,12 @@ import { useTodoService } from "../useTodoService";
 import "./../App.css";
 import "./../App.css";
 
+const flexStyle = {
+  width: "100%",
+}
+
 const TodoGenerator = () => {
-  const { state, dispatch } = useContext(TodoContext);
+  const { dispatch } = useContext(TodoContext);
   const [todoItem, setTodoItem] = useState("");
   const { createTodo } = useTodoService();
 
@@ -22,7 +26,7 @@ const TodoGenerator = () => {
   };
 
   return (
-    <Flex gap="small">
+    <Flex gap="small" style={flexStyle}>
       <Input
         placeholder="Write the new Todo Item"
         type="text"
