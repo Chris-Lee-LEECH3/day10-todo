@@ -1,7 +1,8 @@
 import React, { useContext, useState } from "react";
+import { Button, Input, Flex } from "antd";
 import { TodoContext } from "../contexts/TodoContext";
-import "./../App.css";
 import { useTodoService } from "../useTodoService";
+import "./../App.css";
 
 const TodoGenerator = () => {
   const { state, dispatch } = useContext(TodoContext);
@@ -20,12 +21,19 @@ const TodoGenerator = () => {
   };
 
   return (
-    <div className="todo-generator-container">
-      <input value={todoItem} onChange={(e) => setTodoItem(e.target.value)} />
-      <button className="todo-generator-btn" onClick={addTodo}>
+    // <div className="todo-generator-container">'
+    <Flex gap="small">
+      <Input
+        placeholder="Write the new Todo Item"
+        type="text"
+        value={todoItem}
+        onChange={(e) => setTodoItem(e.target.value)}
+      />
+      <Button type="primary" onClick={addTodo}>
         Add
-      </button>
-    </div>
+      </Button>
+    </Flex>
+    // </div>
   );
 };
 
