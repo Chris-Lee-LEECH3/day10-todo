@@ -21,7 +21,6 @@ const TodoGenerator = () => {
   };
 
   return (
-    // <div className="todo-generator-container">'
     <Flex gap="small">
       <Input
         placeholder="Write the new Todo Item"
@@ -33,7 +32,6 @@ const TodoGenerator = () => {
         Add
       </Button>
     </Flex>
-    // </div>
   );
 };
 
