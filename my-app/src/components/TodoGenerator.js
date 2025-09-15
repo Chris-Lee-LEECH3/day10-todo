@@ -1,7 +1,9 @@
 import React, { useContext, useState } from "react";
 import { Button, Input, Flex } from "antd";
+import { Button, Input, Flex } from "antd";
 import { TodoContext } from "../contexts/TodoContext";
 import { useTodoService } from "../useTodoService";
+import "./../App.css";
 import "./../App.css";
 
 const TodoGenerator = () => {
