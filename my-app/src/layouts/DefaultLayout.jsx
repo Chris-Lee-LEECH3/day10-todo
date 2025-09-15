@@ -1,25 +1,49 @@
 import { NavLink, Outlet } from "react-router";
-import { Flex, Layout } from "antd";
+import { Flex, Layout, Menu } from "antd";
 const { Header, Footer, Content } = Layout;
+
+const flexStyle = {
+  width: "100%",
+};
+
+const NavMenu = () => {
+  const items = [
+    {
+      key: 1,
+      label: "Home",
+    },
+    {
+      key: 2,
+      label: "Done Todos",
+    },
+    {
+      key: 3,
+      label: "About us",
+    },
+  ];
+
+  return (
+    <>
+      <Menu
+        theme="dark"
+        mode="horizontal"
+        defaultSelectedKeys={["1"]}
+        items={items}
+        style={{ flex: 1, minWidth: 0 }}
+        onClick={(e) => {
+          console.log(e);
+        }}
+      />
+    </>
+  );
+};
 
 const DefaultLayout = () => {
   return (
-    <Flex gap="middle" wrap>
-      <Layout>
-        <Header>
-          <nav>
-            <ul>
-              <li>
-                <NavLink to={"/"}>Home</NavLink>
-              </li>
-              <li>
-                <NavLink to={"/todos-done"}>Done Todos</NavLink>
-              </li>
-              <li>
-                <NavLink to={"/about"}>About us</NavLink>
-              </li>
-            </ul>
-          </nav>
+    <Flex gap="middle" width="100%%" style={flexStyle} wrap>
+      <Layout width="100%">
+        <Header style={{ display: "flex", alignItems: "center" }}>
+          <NavMenu />
         </Header>
 
         <Content>
