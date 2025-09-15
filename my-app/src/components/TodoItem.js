@@ -1,6 +1,7 @@
-import { useContext } from "react";
-import { TodoContext } from "../contexts/TodoContext";
+import { useContext, useRef, useState } from "react";
 import { useNavigate } from "react-router";
+import { Button, Divider, Modal, Input } from "antd";
+import { TodoContext } from "../contexts/TodoContext";
 import { useTodoService } from "../useTodoService";
 
 export const TodoItem = ({
@@ -12,8 +13,32 @@ export const TodoItem = ({
   const navigate = useNavigate();
   const { updateTodo, deleteTodo } = useTodoService();
 
+  const updateTodoTextRef = useRef(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleOk = () => {
+    const updatedTodo = { ...todo, text: updateTodoTextRef.current };
+    updateTodo(updatedTodo)
+      .then(() => {
+        dispatch({ type: "UPDATE_TODO", payload: updatedTodo });
+        setIsModalOpen(false);
+      })
+      .catch((error) => {
+        console.error("Error updating todo:", error);
+      });
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
   const markAsDone = () => {
-    updateTodo(todo)
+    const updatedTodo = { ...todo, done: !todo.done };
+    updateTodo(updatedTodo)
       .then((updatedTodo) => {
         dispatch({ type: "TOGGLE_TODO", payload: { id: updatedTodo.id } });
       })
@@ -36,6 +61,24 @@ export const TodoItem = ({
     navigate("/todos/" + todo?.id);
   };
 
+  const EditTodoItemModal = () => {
+    return (
+      <Modal
+        title={<h2>Edit Todo Item:</h2>}
+        closable={{ "aria-label": "Custom Close Button" }}
+        open={isModalOpen}
+        onOk={handleOk}
+        onCancel={handleCancel}
+      >
+        <Divider />
+        <Input
+          defaultValue={updateTodoTextRef.current || todo.text}
+          onChange={(e) => (updateTodoTextRef.current = e.target.value)}
+        />
+      </Modal>
+    );
+  };
+
   return (
     <div className="todo-item-container">
       <div className="todo-item">
@@ -44,14 +87,20 @@ export const TodoItem = ({
         </span>
       </div>
       {displayDetailBtn && (
-        <button className="todo-detail-btn" onClick={navigateToDone}>
+        <Button className="todo-detail-btn" onClick={navigateToDone}>
           Detail
-        </button>
+        </Button>
       )}
+
+      <EditTodoItemModal />
+      <Button className="todo-detail-btn" onClick={showModal}>
+        Edit
+      </Button>
+
       {displayDeleteBtn && (
-        <button className="todo-remove-btn" onClick={removeTodo}>
+        <Button className="todo-remove-btn" onClick={removeTodo}>
           X
-        </button>
+        </Button>
       )}
     </div>
   );

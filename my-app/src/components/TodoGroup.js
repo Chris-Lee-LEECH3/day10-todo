@@ -26,7 +26,7 @@ export const TodoGroup = () => {
 
   return (
     <div className="todo-group-container">
-      {state?.length === 0 ? <TodoGroupDescription />: <TodoItems />}
+      {state?.length === 0 ? <TodoGroupDescription /> : <TodoItems />}
     </div>
   );
 };

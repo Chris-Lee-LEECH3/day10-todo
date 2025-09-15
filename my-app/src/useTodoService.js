@@ -1,8 +1,7 @@
 import api from "./api/mockApi";
 
 export function useTodoService() {
-
-  const loadTodos = (params) => {
+  const loadTodos = () => {
     return api.get("/todos").then((response) => response.data);
   };
 
@@ -16,7 +15,7 @@ export function useTodoService() {
     return api
       .put("/todos/" + updatedTodo.id, {
         ...updatedTodo,
-        done: !updatedTodo.done,
+        // done: !updatedTodo.done,
       })
       .then((response) => response.data);
   };
