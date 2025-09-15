@@ -11,17 +11,24 @@ export const TodoItem = ({
 }) => {
   const { dispatch } = useContext(TodoContext);
   const navigate = useNavigate();
-  const location = useLocation();
-  const isTodoDetailPage = location.pathname.includes("/todos");
+
+  const updateTodo = (updatedTodo) => {
+    return api
+      .put("/todos/" + updatedTodo.id, {
+        ...updatedTodo,
+        done: !updatedTodo.done,
+      })
+      .then((response) => response.data);
+  };
+
+  const deleteTodo = (id) => {
+    return api.delete("/todos/" + id).then((response) => response.data);
+  };
 
   const markAsDone = () => {
-    if (isTodoDetailPage) {
-      return;
-    }
-
-    api.put("/todos/" + todo.id, { ...todo, done: !todo.done })
-      .then(() => {
-        dispatch({ type: "TOGGLE_TODO", payload: { id: todo.id } });
+    updateTodo(todo)
+      .then((updatedTodo) => {
+        dispatch({ type: "TOGGLE_TODO", payload: { id: updatedTodo.id } });
       })
       .catch((error) => {
         console.error("Error updating todo:", error);
@@ -29,7 +36,7 @@ export const TodoItem = ({
   };
 
   const removeTodo = () => {
-    api.delete("/todos/" + todo.id)
+    deleteTodo(todo.id)
       .then(() => {
         dispatch({ type: "REMOVE_TODO", payload: { id: todo.id } });
       })

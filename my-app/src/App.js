@@ -7,12 +7,15 @@ import { initState, TodoContext } from "./contexts/TodoContext";
 import { todoReducer } from "./reducers/TodoReducer";
 import "./App.css";
 
+const loadTodos = (params) => {
+  return api.get("/todos").then((response) => response.data);
+};
+
 function App() {
   const [state, dispatch] = useReducer(todoReducer, []);
 
   useEffect(() => {
-    api.get("/todos")
-      .then((response) => response.data)
+    loadTodos()
       .then((todos) => dispatch({ type: "LOAD_TODOS", payload: todos }))
       .catch((error) => {
         console.error("Error fetching todos:", error);
