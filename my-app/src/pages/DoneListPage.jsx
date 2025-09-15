@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { TodoContext } from "../contexts/TodoContext";
+import { TodoItem } from "../components/TodoItem";
 
 const DoneListPage = () => {
   const { state } = useContext(TodoContext);
@@ -10,7 +11,7 @@ const DoneListPage = () => {
       <h1>Done Todos</h1>
       <ul>
         {doneTodos.map((todo) => (
-          <li key={todo.id}>{todo.text}</li>
+          <TodoItem key={todo.id} todo={todo} displayDeleteBtn={false} />
         ))}
       </ul>
     </div>

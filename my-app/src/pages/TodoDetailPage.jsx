@@ -1,8 +1,8 @@
-import React, { useContext } from 'react'
-import { useParams } from 'react-router'
-import { TodoContext } from '../contexts/TodoContext';
+import React, { useContext } from "react";
+import { useParams } from "react-router";
+import { TodoContext } from "../contexts/TodoContext";
 
-import { TodoItem } from '../components/TodoItem';
+import { TodoItem } from "../components/TodoItem";
 
 const TodoDetailPage = () => {
   const { id } = useParams();
@@ -10,14 +10,15 @@ const TodoDetailPage = () => {
   const todo = state?.filter((todo) => todo.id === parseInt(id));
 
   if (todo?.length === 0) {
-    return <div>Todo not found</div>
+    return <div>Todo not found</div>;
   }
 
   return (
     <div>
-        <TodoItem todo={todo[0]} index={id} />
+      <h1>Todo Detail Page</h1>
+      <TodoItem todo={todo[0]} displayDetailBtn={false} />
     </div>
-  )
-}
+  );
+};
 
-export default TodoDetailPage
+export default TodoDetailPage;
