@@ -1,6 +1,7 @@
 import React from 'react'
 import TodoGenerator from './TodoGenerator'
 import { TodoGroup } from './TodoGroup'
+import { Col } from 'antd'
 
 const ToList = () => {
 
@@ -11,11 +12,11 @@ const ToList = () => {
   }
 
   return (
-    <>
+    <Col span={12} className="todo-group-container">
         <TodoGroupHeader />
         <TodoGroup />
         <TodoGenerator />
-    </>
+    </Col>
   )
 }
 

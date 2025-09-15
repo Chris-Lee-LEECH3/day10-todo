@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from "react-router";
+import { NavLink, Outlet, useNavigate } from "react-router";
 import { Flex, Layout, Menu } from "antd";
 const { Header, Footer, Content } = Layout;
 
@@ -6,7 +6,23 @@ const flexStyle = {
   width: "100%",
 };
 
+const contentStyle = { 
+  minHeight: "100vh",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  padding: "1rem"
+}
+
+const footerStyle = {
+  textAlign: 'center',
+  color: '#fff',
+  backgroundColor: '#001529',
+}
+
 const NavMenu = () => {
+  const navigate = useNavigate();
+
   const items = [
     {
       key: 1,
@@ -22,6 +38,16 @@ const NavMenu = () => {
     },
   ];
 
+  const handleNavigate = (key) => {
+    if (key == 1) {
+      navigate("/");
+    } else if (key == 2) {
+      navigate("/todos-done");
+    } else if (key == 3) {
+      navigate("/about");
+    }
+  }
+
   return (
     <>
       <Menu
@@ -31,7 +57,7 @@ const NavMenu = () => {
         items={items}
         style={{ flex: 1, minWidth: 0 }}
         onClick={(e) => {
-          console.log(e);
+          handleNavigate(e.key)
         }}
       />
     </>
@@ -46,11 +72,11 @@ const DefaultLayout = () => {
           <NavMenu />
         </Header>
 
-        <Content>
+        <Content style={contentStyle}>
           <Outlet />
         </Content>
 
-        <Footer>Footer</Footer>
+        <Footer style={footerStyle}>Footer</Footer>
       </Layout>
     </Flex>
   );

@@ -9,11 +9,11 @@ const DoneListPage = () => {
   return (
     <div className="done-list-container">
       <h1>Done Todos</h1>
-      <ul>
+      <div>
         {doneTodos.map((todo) => (
           <TodoItem key={todo.id} todo={todo} displayDeleteBtn={false} />
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
