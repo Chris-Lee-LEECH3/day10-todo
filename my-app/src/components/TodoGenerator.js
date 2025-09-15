@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { TodoContext } from '../contexts/TodoContext';
+import './../App.css';
 
 const TodoGenerator = () => {
   const { state, dispatch } = useContext(TodoContext);
