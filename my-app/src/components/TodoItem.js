@@ -22,7 +22,7 @@ export const TodoItem = ({ todo }) => {
           {todo.text}
         </span>
       </div>
-      <button className="todo-remove-btn" c onClick={removeTodo}>X</button>
+      <button className="todo-remove-btn" onClick={removeTodo}>X</button>
     </div>
   );
 };

@@ -1,14 +1,16 @@
 import { useReducer } from "react";
-import "./App.css";
 import { TodoContext } from "./contexts/TodoContext";
 import { todoReducer } from "./reducers/TodoReducer";
-import TodoList from "./components/TodoList";
 import {
   createBrowserRouter,
   RouterProvider,
   NavLink,
   Outlet,
+  useRouteError,
 } from "react-router";
+
+import TodoList from "./components/TodoList";
+import "./App.css";
 
 export const initState = [
   // { id: 1, text: "the first todo", done: false },
@@ -32,10 +34,23 @@ const DefaultLayout = () => {
   );
 };
 
+const ErrorPage = () => {
+  const error = useRouteError();
+  return (
+    <div className="error-page">
+      { error.status === 404 
+        ? <h1>Page Not Found</h1> 
+        : <div>{JSON.stringify(error)}</div>
+      }
+    </div>
+  );
+}
+
 const routes = createBrowserRouter([
   {
     path: "/",
     element: <DefaultLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
