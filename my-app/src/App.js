@@ -1,22 +1,18 @@
 import { useReducer } from "react";
-import { TodoContext } from "./contexts/TodoContext";
+import { initState, TodoContext } from "./contexts/TodoContext";
 import { todoReducer } from "./reducers/TodoReducer";
 import {
   createBrowserRouter,
   RouterProvider,
   NavLink,
   Outlet,
-  useRouteError,
 } from "react-router";
 
 import HomePage from "./pages/HomePage";
 import ErrorPage from "./pages/ErrorPage";
-import "./App.css";
+import TodoDetailPage from "./pages/TodoDetailPage.jsx";
 
-export const initState = [
-  // { id: 1, text: "the first todo", done: false },
-  // { id: 2, text: "the second todo", done: true },
-];
+import "./App.css";
 
 const DefaultLayout = () => {
   return (
@@ -44,6 +40,10 @@ const routes = createBrowserRouter([
       {
         path: "/",
         element: <HomePage />,
+      },
+      {
+        path: "/todos/:id",
+        element: <TodoDetailPage />,
       },
     ],
   },
