@@ -4,6 +4,7 @@ import HomePage from "../pages/HomePage";
 import ErrorPage from "../pages/ErrorPage";
 import TodoDetailPage from "../pages/TodoDetailPage.jsx";
 import DefaultLayout from "../layouts/DefaultLayout";
+import AboutUsPage from "../pages/AboutUsPage.jsx";
 
 const routes = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const routes = createBrowserRouter([
         path: "/todos/:id",
         element: <TodoDetailPage />,
       },
+      {
+        path: "/about",
+        element: <AboutUsPage />,
+      }
     ],
   },
 ]);

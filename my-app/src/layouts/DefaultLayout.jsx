@@ -8,6 +8,9 @@ const DefaultLayout = () => {
           <li>
             <NavLink to={"/"}>Home</NavLink>
           </li>
+          <li>
+            <NavLink to={"/about"}>About us</NavLink>
+          </li>
         </ul>
       </nav>
       <main>
