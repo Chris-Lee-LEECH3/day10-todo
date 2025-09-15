@@ -1,8 +1,7 @@
 import { useContext } from "react";
 import { TodoContext } from "../contexts/TodoContext";
-import { useLocation, useNavigate } from "react-router";
-
-import api from "../api/mockApi";
+import { useNavigate } from "react-router";
+import { useTodoService } from "../useTodoService";
 
 export const TodoItem = ({
   todo,
@@ -11,19 +10,7 @@ export const TodoItem = ({
 }) => {
   const { dispatch } = useContext(TodoContext);
   const navigate = useNavigate();
-
-  const updateTodo = (updatedTodo) => {
-    return api
-      .put("/todos/" + updatedTodo.id, {
-        ...updatedTodo,
-        done: !updatedTodo.done,
-      })
-      .then((response) => response.data);
-  };
-
-  const deleteTodo = (id) => {
-    return api.delete("/todos/" + id).then((response) => response.data);
-  };
+  const { updateTodo, deleteTodo } = useTodoService();
 
   const markAsDone = () => {
     updateTodo(todo)
