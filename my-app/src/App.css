@@ -42,6 +42,10 @@ header > nav > ul > li > a:hover {
   text-decoration: underline;
 }
 
+main {
+  width: 100%;
+}
+
 .todo-group-container {
   display: flex;
   flex-direction: column;
