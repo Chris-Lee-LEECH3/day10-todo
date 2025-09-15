@@ -9,6 +9,9 @@ const DefaultLayout = () => {
             <NavLink to={"/"}>Home</NavLink>
           </li>
           <li>
+            <NavLink to={"/todos-done"}>Done Todos</NavLink>
+          </li>
+          <li>
             <NavLink to={"/about"}>About us</NavLink>
           </li>
         </ul>

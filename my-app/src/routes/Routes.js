@@ -5,6 +5,7 @@ import ErrorPage from "../pages/ErrorPage";
 import TodoDetailPage from "../pages/TodoDetailPage.jsx";
 import DefaultLayout from "../layouts/DefaultLayout";
 import AboutUsPage from "../pages/AboutUsPage.jsx";
+import DoneListPage from "../pages/DoneListPage.jsx";
 
 const routes = createBrowserRouter([
   {
@@ -23,7 +24,11 @@ const routes = createBrowserRouter([
       {
         path: "/about",
         element: <AboutUsPage />,
-      }
+      },
+      {
+        path: "/todos-done",
+        element: <DoneListPage />,
+      },
     ],
   },
 ]);
