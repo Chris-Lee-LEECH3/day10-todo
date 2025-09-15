@@ -9,7 +9,8 @@ import {
   useRouteError,
 } from "react-router";
 
-import TodoList from "./components/TodoList";
+import HomePage from "./pages/HomePage";
+import ErrorPage from "./pages/ErrorPage";
 import "./App.css";
 
 export const initState = [
@@ -34,18 +35,6 @@ const DefaultLayout = () => {
   );
 };
 
-const ErrorPage = () => {
-  const error = useRouteError();
-  return (
-    <div className="error-page">
-      { error.status === 404 
-        ? <h1>Page Not Found</h1> 
-        : <div>{JSON.stringify(error)}</div>
-      }
-    </div>
-  );
-}
-
 const routes = createBrowserRouter([
   {
     path: "/",
@@ -54,7 +43,7 @@ const routes = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <TodoList />,
+        element: <HomePage />,
       },
     ],
   },
