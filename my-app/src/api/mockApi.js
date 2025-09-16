@@ -1,3 +1,4 @@
+import { message } from "antd";
 import axios from "axios";
 
 const api = axios.create({
@@ -6,4 +7,18 @@ const api = axios.create({
   timeout: 10_000,
 });
 
-export default api;
+api.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  (error) => {
+    // handle response error
+    const { status, data } = error.response;
+    if (status === 404) {
+      message.error(error.message).then((r) => {});
+    }
+    return Promise.reject(error);
+  }
+);
+
+export { api };

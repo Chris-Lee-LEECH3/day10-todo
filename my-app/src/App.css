@@ -46,13 +46,6 @@ main {
   width: 100%;
 }
 
-.todo-group-container {
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* align-items: center; */
-  /* max-width: 500px; */
-}
-
 .todo-list {
   margin-block: 1rem;
 }
@@ -66,7 +59,7 @@ main {
 }
 
 .todo-item {
-  width: 500px;
+  width: 100%;
   padding: 16px;
   border: 1px solid #000;
   margin-top: 10px;
